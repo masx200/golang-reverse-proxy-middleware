@@ -78,10 +78,10 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	log.Println("clientport:", port)
 	forwarded := fmt.Sprintf(
 		"for=%s;by=%s;host=%s;proto=%s",
-		clienthost, // 代理自己的标识或IP地址
-		r.Host,     // 代理的标识
-		r.Host,     // 原始请求的目标主机名
-		"http",     // 或者 "https" 根据实际协议
+		r.Header.Get("true-client-ip"), // clienthost, // 代理自己的标识或IP地址
+		r.Host,                         // 代理的标识
+		r.Host,                         // 原始请求的目标主机名
+		"http",                         // 或者 "https" 根据实际协议
 	)
 	r.Header.Add("Forwarded", forwarded)
 	for k, v := range r.Header {
