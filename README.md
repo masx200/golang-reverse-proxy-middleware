@@ -1,20 +1,24 @@
 # golang-reverse-proxy-middleware
 
 #### 介绍
+
 golang-reverse-proxy-middleware
 
 #### 软件架构
-软件架构说明
 
+软件架构说明
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. xxxx
+2. xxxx
+3. xxxx
 
 #### 使用说明
 
+```
+go run main.go
+```
 
 设置环境变量 token 访问秘钥token123456
 
@@ -28,4 +32,5 @@ golang-reverse-proxy-middleware
 
 # 设定代理行为的重定向方式
 
-可以设定请求头中的字段"x-proxy-redirect"为"error" | "follow" | "manual"来设定代理行为的重定向方式.
+可以设定请求头中的字段"x-proxy-redirect"为"error" | "follow" |
+"manual"来设定代理行为的重定向方式.
