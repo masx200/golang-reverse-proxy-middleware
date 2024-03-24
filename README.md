@@ -17,7 +17,9 @@ golang-reverse-proxy-middleware
 
 
 设置环境变量 token 访问秘钥token123456
+
 设置环境变量 port 监听端口8080
+
 访问地址:
 
 `http://localhost:3000/token/token123456/https/www.360.cn`
