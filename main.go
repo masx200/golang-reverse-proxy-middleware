@@ -154,14 +154,14 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	w.WriteHeader(resp.StatusCode)
 
 	// Copy the response body back to the client.
-	bodyBytes2, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Println(err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	if _, err := io.Copy(w, bytes.NewReader(bodyBytes2)); err != nil {
+	// bodyBytes2, err := io.ReadAll(resp.Body)
+	// if err != nil {
+	// 	log.Println(err)
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
+	/* 流式传输,防止内存溢出 */
+	if _, err := io.Copy(w, resp.Body /* bytes.NewReader(bodyBytes2) */); err != nil {
 		log.Println("Error writing response:", err)
 	}
 }
