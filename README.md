@@ -26,9 +26,9 @@ go run main.go
 
 访问地址:
 
-`http://localhost:3000/token/token123456/https/www.360.cn`
+`http://localhost:8080/token/token123456/https/www.360.cn`
 
-`http://localhost:3000/token/token123456/http/example.com`
+`http://localhost:8080/token/token123456/http/example.com`
 
 # 设定代理行为的重定向方式
 
