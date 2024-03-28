@@ -219,6 +219,7 @@ func main() {
 			}
 			url.RawQuery = ctx.Request.URL.RawQuery
 			proxyHandler(ctx.Writer, ctx.Request, url)
+			/* 这里必须要ctx.Abort(),否则会和下面的中间件发生冲突 */
 			ctx.Abort()
 			return
 		} else if strings.HasPrefix(ctx.Request.URL.Path, "/token/"+token+"/https/") {
@@ -230,6 +231,7 @@ func main() {
 			}
 			url.RawQuery = ctx.Request.URL.RawQuery
 			proxyHandler(ctx.Writer, ctx.Request, url)
+			/* 这里必须要ctx.Abort(),否则会和下面的中间件发生冲突 */
 			ctx.Abort()
 			return
 		}
