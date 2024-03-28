@@ -3,7 +3,7 @@ package main
 import (
 	// "net/http"
 
-	"bytes"
+	// "bytes"
 	"fmt"
 	"io"
 	"log"
