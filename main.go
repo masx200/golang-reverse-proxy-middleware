@@ -148,11 +148,11 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	defer resp.Body.Close()
 
 	// Copy headers from the response to the client's response.
+
+	w.WriteHeader(resp.StatusCode)
 	for k, v := range resp.Header {
 		w.Header().Add(k, strings.Join(v, ","))
 	}
-	w.WriteHeader(resp.StatusCode)
-
 	// Copy the response body back to the client.
 	// bodyBytes2, err := io.ReadAll(resp.Body)
 	// if err != nil {
