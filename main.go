@@ -113,12 +113,13 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	// 创建一个使用了代理的客户端
 	defer r.Body.Close()
 	/* 请求body的问题 */
-	bodyBytes, err := io.ReadAll(r.Body)
-	if err != nil {
-		log.Println(err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	/* 这里也需要流式处理 */
+	// bodyBytes, err := io.ReadAll(r.Body)
+	// if err != nil {
+	// 	log.Println(err)
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
 
 	// fmt.Println("body:", string(bodyBytes))
 	client := &http.Client{ /* Transport: newTransport("http://your_proxy_address:port") */
@@ -131,7 +132,8 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	if r.Header.Get("x-proxy-redirect") == "follow" {
 		client.CheckRedirect = nil
 	}
-	proxyReq, err := http.NewRequest(r.Method, targetUrl, bytes.NewReader(bodyBytes))
+	/* 这里也需要流式处理 */
+	proxyReq, err := http.NewRequest(r.Method, targetUrl, r.Body /* bytes.NewReader(bodyBytes) */)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
