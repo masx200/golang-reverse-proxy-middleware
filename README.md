@@ -12,7 +12,7 @@ golang-reverse-proxy-middleware
 
 1. `cd static && pnpm install && pnpm run build && cd ..`
 
-2. `cp -r static/dist/* public/`
+2. `cp -r -v static/dist/* public/`
 
 3. `go build main.go`
 
