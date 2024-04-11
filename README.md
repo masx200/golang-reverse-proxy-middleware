@@ -10,9 +10,11 @@ golang-reverse-proxy-middleware
 
 #### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. `cd static && pnpm install && pnpm run build && cd ..`
+
+2. `cp static/dist/* public/`
+
+3. `go build main.go`
 
 #### 使用说明
 
