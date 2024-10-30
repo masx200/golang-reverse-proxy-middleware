@@ -9,8 +9,11 @@
         "preview": "vite preview"
     },
     "devDependencies": {
+        "micromatch": ">=4.0.8",
+        "braces": ">=3.0.3",
         "typescript": "^5.2.2",
         "vite": "^5.2.14",
-        "vite-plugin-pwa": "^0.19.8"
+        "vite-plugin-pwa": "^0.19.8",
+        "rollup": ">=4.22.4"
     }
 }
